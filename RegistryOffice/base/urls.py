@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     # Маршруты 
     path('', views.index, name='index'), # общий маршрут
-    
+
     # Маршруты относящиеся к бракам
     path('marriage_list/', views.marriage_list, name='marriage_list'),
     path('add/', views.add_marriage, name='add_marriage'),
@@ -15,4 +15,11 @@ urlpatterns = [
 
     # Маршоуты относящиеся кразводам
     path('divorce_list/', views.divorce_list, name='divorce_list'),
+    path('create/', views.create_divorce, name='create_divorce'),
+    path('divorce/<int:pk>/', views.divorce_detail, name='divorce_detail'),
+    path('divorce/<int:pk>/delete/', views.delete_divorce, name='delete_divorce'),
+    path('divorce/<int:pk>/edit/', views.edit_divorce, name='edit_divorce'),
+
+    # Маршрут с информацией про загс
+    path('about-ru', views.about, name='about')
 ]

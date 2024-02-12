@@ -10,7 +10,7 @@
   <h1 class="text-center">{{ marriage.groom }} and {{ marriage.bride }}</h1><br>
   <div class="alert alert-info">
     <h1>{{ marriage.groom }} and {{ marriage.bride }}</h1>   
-    <p>Дата заключения брака: {{ marriage.marriage_date }}</p>
+    <h2>Дата заключения брака: {{ marriage.marriage_date }}</h2>
     <a href="{% url 'delete_marriage' marriage.pk %}" class="btn btn-danger">Удалить</a>  
     <a href="{% url 'edit_marriage' marriage.pk %}" class="btn btn-success">Изменить</a>  
   </div>     

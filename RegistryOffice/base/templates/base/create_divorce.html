@@ -1,0 +1,28 @@
+{% extends 'base/main.html' %}
+
+{% block title  %}
+Добавить разводы
+{% endblock  %}
+
+{% block content  %}
+<br><br><br>
+   <h1>Добавить развод</h1><br>
+   <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.husband.label_tag }}
+        {{ form.husband }}
+      </div><br>
+      <div class="form-group">
+        {{ form.wife.label_tag }}
+        {{ form.wife }}
+      </div><br>
+      <div class="form-group">
+        {{ form.divorce_date.label_tag }}
+        {{ form.divorce_date }}
+      </div><br>      
+      <button type="submit" class="btn btn-success">Добавить развод</button>
+      <span>{{ error }}</span> 
+   </form>
+
+{% endblock  %}

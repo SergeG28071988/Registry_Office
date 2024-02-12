@@ -1,0 +1,18 @@
+{% extends 'base/main.html' %}
+
+{% block title %}
+{{ divorce.husband }} and {{ divorce.wife }}
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="container mt-5">
+  <h1 class="text-center">{{ divorce.husband }} and {{ divorce.wife }}</h1><br>
+  <div class="alert alert-info">
+    <h1>{{ divorce.husband }} and {{ divorce.wife }}</h1>   
+    <h2>Дата развода: {{ divorce.divorce_date }}</h2>
+    <a href="{% url 'delete_divorce' divorce.pk %}" class="btn btn-danger">Удалить</a>
+    <a href="{% url 'edit_divorce'  divorce.pk %}" class="btn btn-success">Изменить</a>  
+  </div>     
+</div>
+{% endblock %}

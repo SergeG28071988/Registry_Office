@@ -1,0 +1,35 @@
+{% extends 'base/main.html' %}
+
+{% block title  %}
+Регистрация разводов
+{% endblock  %}
+
+{% block content  %}
+<br><br><br>
+    <h1>Разводы</h1>    
+    {% if divorces  %}
+        <table class="table mt-2">
+            <thead>
+                <tr>
+                    <th>Муж</th>
+                    <th>Жена</th>
+                    <th>Дата регистрации развода</th>             
+                    <th>Детали</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for divorce in divorces %}
+                    <tr>
+                        <td>{{ divorce.husband }}</td>
+                        <td>{{ divorce.wife }}</td>
+                        <td>{{ divorce.divorce_date }}</td>                        
+                        <td><a href="{% url 'divorce_detail' divorce.pk %}" class="btn btn-warning">Детальнее</a></td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>У нас нет записей! </p>
+    {% endif %}
+{% endblock  %}

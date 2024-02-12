@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Marriage
 from .models import Divorce
 from .marriage_form import MarriageForm
-
+from .divorce_form import DivorceForm
 # Create your views here.
 
 
@@ -48,6 +48,7 @@ def delete_marriage(request, pk):
     marriage.delete()
     return redirect('index')
 
+
 def edit_marriage(request, pk):
     marriage = get_object_or_404(Marriage, pk=pk)
 
@@ -68,3 +69,48 @@ def divorce_list(request):
     return render(request, 'base/divorce_list.html', context)
 
 
+def create_divorce(request):
+    error = ''
+    if request.method == 'POST':
+        form = DivorceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('divorce_list')
+        else:
+            error = "Форма была не верной"
+    
+    form = DivorceForm()
+    context = {
+        'form': form,
+        'error': error
+    }
+    return render(request, 'base/create_divorce.html', context)
+
+
+def divorce_detail(request, pk):
+    divorce = get_object_or_404(Divorce, pk=pk)
+    return render(request, 'base/divorce_detail.html', {'divorce': divorce})
+
+
+def delete_divorce(request, pk):
+    divorce = get_object_or_404(Divorce, pk=pk)
+    divorce.delete()
+    return redirect('divorce_list')
+
+
+def edit_divorce(request, pk):
+    divorce = get_object_or_404(Divorce, pk=pk)
+
+    if request.method == 'POST':
+        form = DivorceForm(request.POST, instance=divorce)
+        if form.is_valid():
+            form.save()
+            return redirect('divorce_list')
+    else:
+        form = DivorceForm(instance=divorce)
+
+    return render(request, 'base/edit_divorce.html', {'form': form})
+
+
+def about(request):
+    return render(request, 'base/about.html')
