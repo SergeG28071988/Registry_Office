@@ -1,0 +1,36 @@
+{% extends 'base/main.html' %}
+
+{% block title  %}
+Заключенные браки
+{% endblock  %}
+
+{% block content  %}
+<br><br><br>
+    <h1>Браки</h1>    
+    {% if marriages  %}
+        <table class="table mt-2">
+            <thead>
+                <tr>
+                    <th>Жених</th>
+                    <th>Невеста</th>
+                    <th>Дата заключения брака</th>             
+                    <th>Детали</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for marriage in marriages %}
+                    <tr>
+                        <td>{{ marriage.groom }}</td>
+                        <td>{{ marriage.bride }}</td>
+                        <td>{{ marriage.marriage_date }}</td>
+                        
+                        <td><a href="{% url 'marriage_detail' marriage.pk %}" class="btn btn-warning">Детальнее</a></td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>У нас нет записей! </p>
+    {% endif %}
+{% endblock  %}

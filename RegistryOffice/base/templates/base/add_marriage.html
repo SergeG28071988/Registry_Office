@@ -1,0 +1,28 @@
+{% extends 'base/main.html' %}
+
+{% block title  %}
+Добавить брак
+{% endblock  %}
+
+{% block content  %}
+<br><br><br>
+   <h1>Добавить брак</h1><br>
+   <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.groom.label_tag }}
+        {{ form.groom }}
+      </div><br>
+      <div class="form-group">
+        {{ form.bride.label_tag }}
+        {{ form.bride }}
+      </div><br>
+      <div class="form-group">
+        {{ form.marriage_date.label_tag }}
+        {{ form.marriage_date }}
+      </div>      
+      <button type="submit" class="btn btn-success">Добавить брак</button>
+      <span>{{ error }}</span> 
+   </form>
+
+{% endblock  %}
