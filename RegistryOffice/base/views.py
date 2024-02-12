@@ -26,9 +26,10 @@ def add_marriage(request):
         form = MarriageForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('marriage_list')
+            return redirect('index')
         else:
             error = "Форма была не верной"
+            return redirect('marriage_list')
     
     form = MarriageForm()
     context = {
